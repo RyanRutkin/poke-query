@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react';
-import { Pokemon } from 'pokenode-ts';
+import { PokemonClient, Pokemon } from 'pokenode-ts';
 
 export const SelectedPokemonContext = createContext<{
     pokemonId: number;
@@ -10,5 +10,15 @@ export const SelectedPokemonContext = createContext<{
 });
 
 export const SelectedPokemonContextProvider = () => {
-    const [selectedPokemon, setSelectedPokemon] = useState<number>(-1);
+    const [ pokemonId, setSelectedPokemonId ] = useState<number>(-1);
+
+    const getSelectedPokemon = () => {
+        return new Promise<Pokemon>((resolve, reject) => {
+            if (pokemonId === -1) {
+                reject("Invalid pokemon-id supplied. (-1)");
+                return
+            }
+            
+        })
+    }
 }
